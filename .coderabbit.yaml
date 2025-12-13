@@ -1,0 +1,61 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+version: "3"
+
+# Language settings
+language: "en-US"
+
+# Review settings
+reviews:
+  # Enable all features
+  high_level_summary: true
+  poem: false
+  review_status: true
+  collapse_walkthrough: false
+  
+  # Auto-review PRs
+  auto_review:
+    enabled: true
+    drafts: true
+  
+  # Review profile
+  profile: "assertive"
+  
+  # Files to review
+  path_filters:
+    - "!**/*.lock"
+    - "!**/*.min.js"
+    - "!**/node_modules/**"
+    - "!**/.venv/**"
+    - "!**/dist/**"
+  
+  # Custom instructions
+  instructions: |
+    Focus on:
+    - Code quality and best practices
+    - Security vulnerabilities
+    - Performance optimizations
+    - Documentation completeness
+
+# Chat settings
+chat:
+  auto_reply: true
+
+# Knowledge base
+knowledge_base:
+  learnings:
+    scope: "auto"
+  issues:
+    scope: "auto"
+  pull_requests:
+    scope: "auto"
+
+# Tools
+tools:
+  shellcheck:
+    enabled: true
+  ruff:
+    enabled: true
+  markdownlint:
+    enabled: true
+  github-checks:
+    enabled: true

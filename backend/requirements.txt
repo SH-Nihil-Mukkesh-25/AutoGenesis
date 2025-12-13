@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+requests
+pydantic
+google-generativeai
+python-dotenv
+groq
+# oumi (Commented out due to build error on Windows)

@@ -1,0 +1,105 @@
+id: autogenesis-ai-summarizer
+namespace: company.autogenesis
+
+description: |
+  Kestra AI Agent that summarizes Autogenesis project memory
+  and makes decisions based on the data.
+
+inputs:
+  - name: memory_path
+    type: STRING
+    defaults: "storage/memory.json"
+
+tasks:
+  # Task 1: Read and parse memory
+  - id: load_memory
+    type: io.kestra.plugin.scripts.python.Script
+    script: |
+      import json
+      import os
+      
+      memory_path = "{{ inputs.memory_path }}"
+      
+      try:
+          with open(memory_path, 'r') as f:
+              projects = json.load(f)
+          
+          # Summarize data
+          total_projects = len(projects)
+          total_files = sum(len(p.get('code_files', [])) for p in projects)
+          languages = set()
+          for p in projects:
+              for f in p.get('code_files', []):
+                  ext = f.split('.')[-1]
+                  languages.add(ext)
+          
+          avg_xp = sum(p.get('xp_gained', 0) for p in projects) / max(total_projects, 1)
+          
+          summary = {
+              "total_projects": total_projects,
+              "total_files": total_files,
+              "unique_languages": list(languages),
+              "average_xp_per_project": round(avg_xp, 2),
+              "recent_ideas": [p.get('idea', '')[:50] for p in projects[-5:]]
+          }
+          
+          print(json.dumps(summary, indent=2))
+          
+          # Store for next task
+          with open('summary.json', 'w') as f:
+              json.dump(summary, f)
+              
+      except FileNotFoundError:
+          print('{"total_projects": 0, "message": "No memory yet"}')
+    outputFiles:
+      - summary.json
+
+  # Task 2: AI Decision Making
+  - id: ai_decision
+    type: io.kestra.plugin.scripts.python.Script
+    dependsOn:
+      - load_memory
+    script: |
+      import json
+      
+      with open('summary.json', 'r') as f:
+          summary = json.load(f)
+      
+      decisions = []
+      
+      # Decision: Need more diverse projects?
+      if len(summary.get('unique_languages', [])) < 3:
+          decisions.append({
+              "type": "recommendation",
+              "message": "Try generating projects in different languages for better learning"
+          })
+      
+      # Decision: Low XP rate?
+      if summary.get('average_xp_per_project', 0) < 20:
+          decisions.append({
+              "type": "improvement",
+              "message": "Generate more complex projects to earn more XP"
+          })
+      
+      # Decision: Ready for advanced mode?
+      if summary.get('total_projects', 0) >= 10:
+          decisions.append({
+              "type": "unlock",
+              "message": "AI is ready for advanced autonomous mode"
+          })
+      
+      print("AI Decisions:")
+      for d in decisions:
+          print(f"  [{d['type'].upper()}] {d['message']}")
+      
+      if not decisions:
+          print("  No recommendations - keep coding!")
+
+triggers:
+  - id: daily_summary
+    type: io.kestra.core.models.triggers.types.Schedule
+    cron: "0 9 * * *"
+    
+  - id: on_10_projects
+    type: io.kestra.core.models.triggers.types.Webhook
+    key: autogenesis-milestone
