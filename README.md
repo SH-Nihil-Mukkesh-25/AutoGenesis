@@ -4,7 +4,7 @@
 
 Autogenesis is an autonomous coding agent that plans, writes, tests, and deploys full-stack applications. Unlike standard code assistants, it has **long-term memory**, an **evolving skill tree**, and **reinforcement learning** mechanics that improve its performance over time.
 
-![Autogenesis Demo](https://via.placeholder.com/800x400?text=Autogenesis+Dashboard)
+![Autogenesis Dashboard](assets/dashboard.png)
 
 ---
 
@@ -16,6 +16,17 @@ Autogenesis is an autonomous coding agent that plans, writes, tests, and deploys
 *   **💾 Long-Term Memory**: Remembers past projects and code styles using **Kestra**.
 *   **🚀 One-Click Deployment**: Deploys instantly to **Vercel** with a public URL.
 *   **🎓 Self-Improvement**: Uses **Oumi RLHF** to fine-tune based on your ratings.
+
+### Visual Demo
+
+| **Live Preview** | **Skill Tree Growth** |
+| :---: | :---: |
+| ![Glassmorphism Calculator](assets/demo_preview.png) | ![Skill Tree](assets/skill_tree.png) |
+
+*Full code view and terminal:*
+![Code Editor](assets/code_view.png)
+
+---
 
 ---
 
