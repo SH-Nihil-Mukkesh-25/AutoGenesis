@@ -94,7 +94,7 @@ Autogenesis uses a multi-agent system to simulate a real dev team:
 
 ## 🤝 Community
 
-Built for the **2024 AI Hackathon**.
+Built for the **2025 AI Hackathon**.
 
 *   **Groq** for speed.
 *   **Gemini** for intelligence.
