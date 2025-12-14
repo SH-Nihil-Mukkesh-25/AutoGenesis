@@ -189,6 +189,37 @@ Return JSON: {{"explanations": [{{"line": 1, "code": "...", "explanation": "..."
 class DeployRequest(BaseModel):
     project_name: str = "autogenesis-project"
 
+@app.delete("/reset")
+async def reset_demo():
+    """RESET ENDPOINT FOR DEMO: Wipes all memory and intelligence."""
+    
+    deleted = []
+    
+    # Files to delete
+    params = [
+        "storage/memory.json",
+        "storage/intelligence.json"
+    ]
+    
+    for p in params:
+        try:
+            if os.path.exists(p):
+                os.remove(p)
+                deleted.append(p)
+        except Exception as e:
+            return {"error": f"Failed to delete {p}: {str(e)}"}
+            
+    # Also clear output folder
+    if os.path.exists("output"):
+        shutil.rmtree("output")
+        deleted.append("output/")
+
+    return {
+        "success": True, 
+        "message": "Demo state reset successfully! Reload frontend to see 0% state.",
+        "deleted": deleted
+    }
+
 @app.post("/deploy")
 async def deploy_to_vercel(req: DeployRequest):
     """Simulate Vercel deployment (returns deployment URL)."""
