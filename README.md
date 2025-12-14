@@ -24,7 +24,7 @@ But the real magic is in its **growth mechanics**:
 - **XP System**: Every feature you implement earns XP.  
 - **Skill Tree**: As it levels up, it unlocks new capabilities (e.g., Python Lv1 -> Python Lv5).  
 - **RLHF Training**: Rate its code (1–5 stars) to train a custom model adapter via **Oumi**.
-- **Export**: Export thr entire code-base as .zip file.
+- **Export**: Export the entire code-base as .zip file.
 
 ***
 
