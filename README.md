@@ -199,4 +199,5 @@ Built for the **2025 AI Hackathon**.
 ***
 
 Built with 🫶 by Nikhil Jones A & SH Nihil Mukkesh
+
 © 2025 Autogenesis Team. Open Source. Licensed under the MIT License.[3]
