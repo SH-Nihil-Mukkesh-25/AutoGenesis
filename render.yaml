@@ -1,6 +1,7 @@
 services:
   - type: web
     name: autogenesis-backend
+    root: backend
     env: python
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn api:app --host 0.0.0.0 --port $PORT
@@ -9,6 +10,3 @@ services:
         value: 3.9.0
       - key: MOCK_MODE
         value: "false"
-      # These should be set in Render dashboard:
-      # - key: GROQ_API_KEY
-      # - key: GEMINI_API_KEY
