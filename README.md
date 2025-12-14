@@ -198,9 +198,5 @@ Built for the **2025 AI Hackathon**.
 
 ***
 
+Built with 🫶 by Nikhil Jones A & SH Nihil Mukkesh
 © 2025 Autogenesis Team. Open Source. Licensed under the MIT License.[3]
-
-Sources
-[1] License-MIT-purple.svg https://img.shields.io/badge/License-MIT-purple.svg
-[2] Status-Beta-green.svg https://img.shields.io/badge/Status-Beta-green.svg
-[3] The MIT License https://opensource.org/licenses/MIT
