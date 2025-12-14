@@ -103,4 +103,4 @@ Built for the **2025 AI Hackathon**.
 
 ---
 
-*(c) 2024 Autogenesis Team. Open Source.*
+*(c) 2025 Autogenesis Team. Open Source.*
