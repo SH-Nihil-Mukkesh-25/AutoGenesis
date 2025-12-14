@@ -11,6 +11,8 @@
 
 ***
 
+![Autogenesis Dashboard](assets/dashboard.png)
+
 ## 🔮 What is Autogenesis?
 
 Autogenesis is an autonomous software engineer that lives in your browser.  
@@ -41,22 +43,16 @@ But the real magic is in its **growth mechanics**:
 ## 📸 Visual Tour
 
 ### Live Preview & Editing
-
 *Watch code turn into reality instantly with full-screen previews.*
-
-
+![Glassmorphism Calculator](assets/demo_preview.png)
 
 ### The AI Skill Tree
-
 *Watch your agent evolve from "Baby" to "Sage" as you build more app.*
-
-
+![Skill Tree](assets/skill_tree.png)
 
 ### Production-Ready Code
-
 *Clean, well-structured code with automated error checking.*
-
-
+![Code Editor](assets/code_view.png)
 
 ***
 
