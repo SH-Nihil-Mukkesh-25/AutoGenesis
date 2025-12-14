@@ -120,5 +120,3 @@ autogenesis/
 | `/export` | GET | Download ZIP |
 
 ---
-
-Built for Hackathon 2024
