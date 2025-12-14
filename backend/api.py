@@ -41,6 +41,21 @@ async def optimize_prompt(req: OptimizeRequest):
     result = run_agent(req.idea, mode="optimize")
     return {"optimized_prompt": result.get("response", req.idea)}
 
+@app.on_event("startup")
+async def startup_event():
+    print("\n" + "="*50)
+    print("🚀 AUTOGENESIS BACKEND STARTING")
+    
+    import os
+    groq = os.getenv("GROQ_API_KEY")
+    gemini = os.getenv("GEMINI_API_KEY")
+    mock = os.getenv("MOCK_MODE")
+    
+    print(f"🔑 GROQ_KEY: {'[FOUND]' if groq else '[MISSING]'}")
+    print(f"🔑 GEMINI_KEY: {'[FOUND]' if gemini else '[MISSING]'}")
+    print(f"⚠️ MOCK_MODE: {mock}")
+    print("="*50 + "\n")
+
 # -------------------------------
 # ROUTES
 # -------------------------------

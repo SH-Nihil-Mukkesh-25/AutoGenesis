@@ -307,7 +307,7 @@ Idea: {idea}
 
 Return ONLY the optimized prompt text."""
         elif mode == "code":
-            prompt = f"""You are an expert developer. Generate clean, working Python code for: {idea}
+            prompt = f"""You are an expert developer. Generate clean, working code for: {idea}
 
 Return ONLY the code, no markdown or explanations."""
         elif mode == "review":
